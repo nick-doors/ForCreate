@@ -31,8 +31,7 @@ internal sealed class CreateCompanyCommandHandler : IRequestHandler<CreateCompan
 
             var newEmployees = await _service.CreateEmployeesAsync(command.NewEmployees, cancellationToken);
 
-            var existingEmployees =
-                await _service.GetEmployeesAsync(command.ExistingEmployeesIds, cancellationToken);
+            var existingEmployees = await _service.GetEmployeesAsync(command.ExistingEmployeesIds, cancellationToken);
 
             foreach (var employee in newEmployees
                          .Concat(existingEmployees))
